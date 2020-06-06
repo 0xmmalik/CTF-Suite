@@ -2,9 +2,10 @@
 ### CAESAR CIPHER ###
 #####################
 
-def encode(plaintext, key, variant="caesar"):
+def encode(plaintext, key=None, variant="caesar"):
     ciphertext = ""
     if "ROT" in variant: key = 13
+    if key == None: raise Exception("You must enter a key for the caesar cipher variant!")
     for i in range(len(plaintext)):
         char = plaintext[i]
         if char.isupper(): ciphertext += chr((ord(char) + key - 65) % 26 + 65)
