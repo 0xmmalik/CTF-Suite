@@ -10,14 +10,12 @@ def encode(plaintext, key=None, variant="caesar"):
         char = plaintext[i]
         if char.isupper(): ciphertext += chr((ord(char) + key - 65) % 26 + 65)
         elif char.islower(): ciphertext += chr((ord(char) + key - 97) % 26 + 97)
-        elif char.isdigit() and (variant == "ROT18" or key < 0):
-            if key >= 0: ciphertext += str((int(char) + 5) % 10)
-            else: ciphertext += str((int(char) - 5) % 10)
+        elif char.isdigit() and variant == "ROT18": ciphertext += str((int(char) + 5) % 10)
         else: ciphertext += char
     return ciphertext
 
 def decode(ciphertext, key=None, search="", variant="caesar"):
-    if "ROT" in variant: key = 13
+    if "ROT" in variant: return encode(ciphertext, variant=variant)
     if key == None:
         plaintexts = []
         for i in range(1, 25):
