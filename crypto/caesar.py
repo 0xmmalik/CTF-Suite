@@ -1,0 +1,27 @@
+#####################
+### CAESAR CIPHER ###
+#####################
+
+def encode(plaintext, key, variant="caesar"):
+    ciphertext = ""
+    if "ROT" in variant: key = 13
+    for i in range(len(plaintext)):
+        char = plaintext[i]
+        if char.isupper(): ciphertext += chr((ord(char) + key - 65) % 26 + 65)
+        elif char.islower(): ciphertext += chr((ord(char) + key - 97) % 26 + 97)
+        elif char.isdigit() and (variant == "ROT18" or key < 0):
+            if key >= 0: ciphertext += str((int(char) + 5) % 10)
+            else: ciphertext += str((int(char) - 5) % 10)
+        else: ciphertext += char
+    return ciphertext
+
+def decode(ciphertext, key=None, search="", variant="caesar"):
+    if "ROT" in variant: key = 13
+    if key == None:
+        plaintexts = []
+        for i in range(1, 25):
+            p = encode(ciphertext, -i)
+            if search in p: plaintexts.append(p)
+        return plaintexts
+    return encode(ciphertext, -key)
+
