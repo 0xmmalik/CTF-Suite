@@ -10,7 +10,7 @@ ROT18 = "ROT18"
 def encode(plaintext, key=None, variant="caesar"):
     ciphertext = ""
     if "ROT" in variant: key = 13
-    if key == None: raise Exception("You must enter a key for the caesar cipher variant!")
+    if key is None: raise Exception("You must enter a key for the caesar cipher variant!")
     for i in range(len(plaintext)):
         char = plaintext[i]
         if char.isupper():
@@ -26,7 +26,7 @@ def encode(plaintext, key=None, variant="caesar"):
 
 def decode(ciphertext, key=None, search="", variant="caesar"):
     if "ROT" in variant: return encode(ciphertext, variant=variant)
-    if key == None:
+    if key is None:
         plaintexts = []
         for i in range(1, 25):
             p = encode(ciphertext, -i)
