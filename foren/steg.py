@@ -8,11 +8,7 @@ def getPixels(filepath):
     return Image.open(filepath).load()
 
 
-def bits2string(b=None):
-    return ''.join([chr(int(x, 2)) for x in b])
-
-
-def getLsb(filepath):
+def get_lsb(filepath):
     extracted_bin = []
     with Image.open(filepath) as img:
         width, height = img.size
@@ -27,7 +23,7 @@ def getLsb(filepath):
     return ''.join(chr(int(extracted_bin[i:i + 8], 2)) for i in range(0, len(extracted_bin), 8))
 
 
-def encLsb(filepath, message, outputfile):
+def encode_lsb(filepath, message, outputfile):
     bin_message = ''.join('{:08b}'.format(ord(c)) for c in message)
     i = 0
     with Image.open(filepath) as img:
