@@ -1,6 +1,7 @@
 ###########################
 ### IMAGE STEGANOGRAPHY ###
 ###########################
+
 from PIL import Image
 
 
