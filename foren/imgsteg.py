@@ -19,7 +19,7 @@ def get_lsb(filepath):
                 for n in range(0, 3):
                     extracted_bin.append(pixel[n] & 1)
 
-    extracted_bin = "".join([str(x) for x in extracted_bin])
+    extracted_bin = ''.join([str(x) for x in extracted_bin])
     return ''.join(chr(int(extracted_bin[i:i + 8], 2)) for i in range(0, len(extracted_bin), 8))
 
 
