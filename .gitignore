@@ -1,4 +1,6 @@
 /example_encoded.png
 /example_encoded.wav
-/crypto/__pycache__/
-/foren/__pycache__/
+/crypto/__pycache__
+/foren/__pycache__
+/.idea
+/.DS_Store
