@@ -2,7 +2,7 @@
 ### CRYPTO TEST ###
 ###################
 
-from crypto import caesar, vigenere
+from crypto import caesar, vigenere, a1z26
 
 c = caesar.encode("flag{m4gIc_i5_r3al}", variant="ROT18")
 print("ROT18 encode: " + c)
@@ -19,3 +19,8 @@ v = vigenere.encode("Hello there! My name is Bob Smith! I enjoy playing soccer a
 print("Long vigenere encode: " + v)
 vd = vigenere.decode(v, maxkeysize=10)
 print("Long vigenere decode w/o key: " + vd[0] + "\n\tKey: " + vd[1])
+
+a = "thisisatestothercharacterswillcomesoon"
+a2 = a1z26.encode(a)
+print(a2)
+print(a1z26.decode(a2, '-'))
